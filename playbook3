@@ -1,0 +1,9 @@
+---
+- name: Apagar los servidores
+  hosts: servers
+  gather_facts: false
+
+  tasks:
+    - name: Apagar los servidores
+      become: true
+      command: shutdown -h now
