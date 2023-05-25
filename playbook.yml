@@ -1,0 +1,8 @@
+- hosts: servers
+  gather_facts: false
+  tasks:
+    - name: Reiniciar el host
+      become: yes
+      reboot:
+        reboot_timeout: 300
+        pre_reboot_delay: 0

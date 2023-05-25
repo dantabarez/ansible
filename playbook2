@@ -1,0 +1,14 @@
+---
+- name: Comprobar el estado de sshd con systemctl
+  hosts: servers
+  gather_facts: true
+
+  tasks:
+    - name: Obtener el estado de sshd
+      command: systemctl status sshd
+      register: sshd_status
+      changed_when: false
+
+    - name: Mostrar estado de sshd
+      debug:
+        var: sshd_status.stdout_lines
