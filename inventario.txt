@@ -1,0 +1,4 @@
+[server1]
+192.168.100.194 ansible_user=server1 ansible_password=server1
+192.168.100.195 ansible_user=server2 ansible_password=server2
+192.168.100.196 ansible_user=server3 ansible_password=server3

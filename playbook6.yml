@@ -1,0 +1,13 @@
+---
+- name: Consultar la fecha en server1
+  hosts: all
+  gather_facts: true  # Recopila información sobre el sistema
+  tasks:
+    - name: Ejecutar comando 'date'
+      command: date
+      register: date_output
+
+    - name: Mostrar resultado de 'date'
+      debug:
+        var: date_output.stdout_lines
+

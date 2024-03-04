@@ -1,0 +1,13 @@
+---
+- name: Consultar estado de la RAM en todo el inventario
+  hosts: all
+  gather_facts: true  # Recopila información sobre el sistema
+  tasks:
+    - name: Ejecutar comando 'free -g'
+      ansible.builtin.shell: free -g
+      register: ram_status
+
+    - name: Mostrar resultado de 'free -g'
+      debug:
+        var: ram_status.stdout_lines
+

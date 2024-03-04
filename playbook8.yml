@@ -1,0 +1,15 @@
+---
+- name: Verificar si Nginx está instalado
+  hosts: all
+  gather_facts: true  # Recopila información sobre el sistema
+  tasks:
+    - name: Verificar instalación de Nginx
+      ansible.builtin.command: "nginx -v"
+      register: nginx_version
+      ignore_errors: true  # Ignora errores para manejar el caso en que Nginx no esté instalado
+
+    - name: Mostrar resultado
+      debug:
+        msg: "Nginx está instalado en {{ inventory_hostname }}"  # Muestra el mensaje si Nginx está instalado
+      when: "'nginx version' in nginx_version.stdout"  # Ejecuta solo si la salida del comando contiene "nginx version"
+

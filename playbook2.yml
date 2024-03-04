@@ -1,0 +1,12 @@
+---
+- name: Consultar estado de SSH
+  hosts: server1
+  gather_facts: true  # Recopila información sobre el sistema
+  tasks:
+    - name: Obtener información sobre el servicio SSH
+      service_facts:
+
+    - name: Mostrar estado del servicio SSH
+      debug:
+        var: services['sshd'].state
+

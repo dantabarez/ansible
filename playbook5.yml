@@ -1,0 +1,13 @@
+---
+- name: Consultar información de la interfaz de red en server1
+  hosts: server1
+  gather_facts: true  # Recopila información sobre el sistema
+  tasks:
+    - name: Ejecutar comando 'ip add'
+      command: ip add
+      register: ip_address_output
+
+    - name: Mostrar resultado de 'ip add'
+      debug:
+        var: ip_address_output.stdout_lines
+

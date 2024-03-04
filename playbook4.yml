@@ -1,0 +1,14 @@
+---
+- name: Consultar estado de networkd-dispatcher
+  hosts: server1
+  gather_facts: true  # Recopila información sobre el sistema
+  tasks:
+    - name: Obtener estado del servicio networkd-dispatcher
+      systemd:
+        name: networkd-dispatcher
+      register: networkd_dispatcher_status
+
+    - name: Mostrar estado del servicio networkd-dispatcher
+      debug:
+        var: networkd_dispatcher_status
+
