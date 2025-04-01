@@ -1,0 +1,43 @@
+---
+- name: Configure Apache, MySQL, and PHP
+  hosts: all
+  become: true
+  tasks:
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+
+    - name: Install Apache
+      apt:
+        name: apache2
+        state: present
+
+    - name: Install MySQL server
+      apt:
+        name: mysql-server
+        state: present
+
+    - name: Install PHP and modules
+      apt:
+        name:
+          - php
+          - php-mysql
+        state: present
+
+    - name: Ensure Apache is running
+      service:
+        name: apache2
+        state: started
+        enabled: true
+
+    - name: Ensure MySQL is running
+      service:
+        name: mysql
+        state: started
+        enabled: true
+
+    - name: Install required Python modules for MySQL
+      apt:
+        name:
+          - python3-pymysql
+        state: present

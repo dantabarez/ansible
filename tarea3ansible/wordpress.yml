@@ -1,0 +1,12 @@
+---
+- name: Run alista-wp.sh script
+  hosts: all
+  become: true
+  tasks:
+    - name: Ensure alista-wp.sh is executable
+      file:
+        path: /vagrant/alista-wp.sh
+        mode: "0755"
+
+    - name: Execute alista-wp.sh script
+      command: bash /vagrant/alista-wp.sh
